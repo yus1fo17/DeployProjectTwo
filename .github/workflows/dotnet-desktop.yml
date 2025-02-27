@@ -25,6 +25,6 @@ jobs:
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
 
-    # - name: Run Restart and Status Script
-    #   run: |
-    #     bash /home/yusif/restart_backend.sh  # Run the script to restart and check the status
+    - name: Run Restart and Status Script
+      run: |
+        bash /home/yusif/projecttwo.sh  # Run the script to restart and check the status
