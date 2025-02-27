@@ -1,0 +1,30 @@
+name: dotnet CI/CD
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: self-hosted  # Running on a self-hosted runner
+
+    strategy:
+      matrix:
+        dotnet-version: ['8.0']  # Select your .NET version here
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4  # Check out the repository
+
+    - name: Set up .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+
+    # - name: Run Restart and Status Script
+    #   run: |
+    #     bash /home/yusif/restart_backend.sh  # Run the script to restart and check the status
